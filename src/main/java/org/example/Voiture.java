@@ -151,17 +151,24 @@ public class Voiture {
     }
 
     public void evalueCT(int currentYear) {
-        if (controleTechnique != null) {
-            int yearsSinceLastControl = currentYear - controleTechnique.getYear();
+        int yearsSinceService = currentYear - miseEnService.getYear();
 
-            if (yearsSinceLastControl >= 2) {
-                System.out.println("Cette voiture doit passer un contrôle technique.");
+        if (yearsSinceService <4){
+            System.out.println("Le controle technique de la voiture est à jour. Car la voiture à moins de 4 ans.");
+        } else{
+            if (controleTechnique != null) {
+                int yearsSinceLastControl = currentYear - controleTechnique.getYear();
+
+                if (yearsSinceLastControl >= 2) {
+                    System.out.println("Cette voiture doit passer un contrôle technique.");
+                } else {
+                    System.out.println("Le controle technique de la voiture est à jour.");
+                }
             } else {
-                System.out.println("Le controle technique de la voiture est à jour.");
+                System.out.println("La date du controle technique n'est pas disponible. Si il a jamais été fait faites le!");
             }
-        } else {
-            System.out.println("La date du controle technique n'est pas disponible. Si il a jamais été fait faites le!");
         }
+
     }
 
     @Override
